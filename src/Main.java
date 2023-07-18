@@ -5,11 +5,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите два числа (арабских или римских): ");
         String input = scanner.nextLine();
-        String calc();
-        System.out.println("Результат: ");
+        String result = calc(input);
+        System.out.println("Результат: "+result);
     }
 
-    public static String calc(String input) {
+    public static String calc (String input) {
         String[] operands = input.split(" ");
         if (operands.length != 3) {
             throw new IllegalArgumentException("Неправильный формат ввода");
@@ -43,7 +43,7 @@ public class Main {
 
         int maxNumber = isRoman ? 10 : 10;
         if (a < 1 || a > maxNumber || b < 1 || b > maxNumber) {
-            throw new IllegalArgumentException("Числа должны быть от 1 " + maxNumber + " включительно");
+            throw new IllegalArgumentException("Числа должны быть от 1 до " + maxNumber + " включительно");
         }
 
         int result = switch (operator) {
@@ -59,11 +59,10 @@ public class Main {
                 throw new IllegalArgumentException("Результат работы калькулятора с римскими числами не может быть меньше единицы");
             }
             String romanResult = Roman.RomanConverter.arabicToRoman(result);
-            System.out.println(romanResult);
+            return (romanResult);
         } else {
-            System.out.println(result);
+            return String.valueOf((result));
         }
-        return aStr;
     }
 
     // Добавлены проверки на арабские и римские числа
